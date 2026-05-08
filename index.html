@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FITFEAST | Two Moods. One Kitchen.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --healthy:#22c55e;
+      --healthy-dark:#14532d;
+      --cheat:#ef4444;
+      --cheat-dark:#7f1d1d;
+      --white:#fff;
+    }
+
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(34,197,94,0.18), transparent 28%),
+        radial-gradient(circle at 80% 80%, rgba(239,68,68,0.18), transparent 28%),
+        linear-gradient(180deg,#050505 0%, #000 50%, #050505 100%);
+      min-height:100vh;
+      overflow:hidden;
+      color:var(--white);
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(34,197,94,0.12), transparent 22%),
+        radial-gradient(circle at 70% 70%, rgba(239,68,68,0.12), transparent 22%);
+      filter:blur(100px);
+      z-index:-2;
+      animation:move 12s ease-in-out infinite alternate;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.008) 0px,
+        rgba(255,255,255,0.008) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      opacity:.2;
+      z-index:-1;
+    }
+
+    .app{
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+    }
+
+    /* BRAND */
+    .brand-header{
+      position:absolute;
+      top:18px;
+      width:100%;
+      text-align:center;
+      z-index:50;
+    }
+
+    .logo{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:3.5rem;
+      letter-spacing:5px;
+      line-height:1;
+    }
+
+    .logo .fit{ color:var(--healthy); }
+    .logo .feast{ color:var(--cheat); }
+
+    .tagline{
+      font-size:.7rem;
+      opacity:.7;
+      letter-spacing:3px;
+      margin-top:5px;
+    }
+
+    /* SPLIT */
+    .split{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .healthy{
+      background:linear-gradient(135deg,#22c55e,#14532d,#051a0c);
+    }
+
+    .cheat{
+      background:linear-gradient(135deg,#ef4444,#7f1d1d,#1a0000);
+    }
+
+    /* GLOW */
+    .split::before{
+      content:"";
+      position:absolute;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      filter:blur(120px);
+      opacity:.25;
+    }
+
+    .healthy::before{
+      background:#22c55e;
+      top:-80px;
+      left:-60px;
+    }
+
+    .cheat::before{
+      background:#ef4444;
+      bottom:-80px;
+      right:-60px;
+    }
+
+    /* CONTENT */
+    .content{
+      text-align:center;
+      z-index:5;
+      padding:20px;
+    }
+
+    .food{
+      font-size:6rem;
+      animation:float 3s ease-in-out infinite;
+      filter:drop-shadow(0 15px 30px rgba(0,0,0,.4));
+    }
+
+    h1{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:3.5rem;
+      letter-spacing:4px;
+      margin-top:10px;
+    }
+
+    p{
+      opacity:.85;
+      margin-top:6px;
+      font-size:.9rem;
+    }
+
+    .btn{
+      margin-top:16px;
+      padding:12px 28px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      font-weight:700;
+      backdrop-filter:blur(10px);
+    }
+
+    /* SMALL OR (FIXED - NOT COVERING ANYTHING) */
+    .divider{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      z-index:10;
+      pointer-events:none;
+      backdrop-filter:blur(10px);
+    }
+
+    .divider span{
+      font-size:1rem;
+      opacity:.7;
+    }
+
+    .divider small{
+      font-size:.5rem;
+      opacity:.5;
+    }
+
+    /* animation */
+    @keyframes float{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-10px);}
+    }
+
+    @keyframes move{
+      0%{transform:translate(-20px,-20px);}
+      100%{transform:translate(20px,20px);}
+    }
+
+    @media(min-width:768px){
+      .app{
+        max-width:420px;
+        margin:auto;
+        border-radius:30px;
+        overflow:hidden;
+        box-shadow:0 0 60px rgba(0,0,0,.5);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="brand-header">
+    <div class="logo">
+      <span class="fit">FIT</span><span class="feast">way</span>
+    </div>
+    <div class="tagline">Two Moods. One Kitchen.</div>
+  </div>
+
+  <!-- HEALTHY -->
+  <section class="split healthy">
+    <div class="content">
+      <div class="food">🥗</div>
+      <h1>HEALTHY</h1>
+      <p>Clean • Fresh • Protein</p>
+      <button class="btn">Explore Healthy</button>
+    </div>
+  </section>
+
+  <!-- OR -->
+  <div class="divider">
+    <span>OR</span>
+    <small>choose</small>
+  </div>
+
+  <!-- CHEAT -->
+  <section class="split cheat">
+    <div class="content">
+      <div class="food">🍔</div>
+      <h1>CHEAT</h1>
+      <p>Loaded • Crispy • Reward</p>
+      <button class="btn">Indulge Now</button>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
