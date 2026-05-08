@@ -18,20 +18,86 @@ body{
   height:100vh;
   overflow:hidden;
   font-family:'Montserrat',sans-serif;
-  background:#000;
   color:#fff;
+
+  /* بدل الأسود الخام */
+  background:
+    radial-gradient(circle at 20% 20%, rgba(34,197,94,0.22), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(239,68,68,0.22), transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), transparent 45%),
+    linear-gradient(180deg,#0b0b0b 0%, #050505 40%, #000 100%);
 }
 
-/* cinematic glow background */
+/* cinematic moving light */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 30% 30%, rgba(34,197,94,.25), transparent 40%),
-    radial-gradient(circle at 70% 70%, rgba(239,68,68,.25), transparent 40%);
-  filter:blur(90px);
+    radial-gradient(circle at 30% 30%, rgba(34,197,94,0.18), transparent 25%),
+    radial-gradient(circle at 70% 70%, rgba(239,68,68,0.18), transparent 25%);
+  filter:blur(120px);
+  opacity:.9;
+  animation:floatGlow 12s ease-in-out infinite alternate;
+  z-index:-2;
+}
+
+/* noise layer (ده سر الفخامة الحقيقي) */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity:.05;
   z-index:-1;
+  pointer-events:none;
+}
+
+@keyframes floatGlow{
+  0%{transform:translate(-30px,-30px) scale(1);}
+  100%{transform:translate(30px,30px) scale(1.1);}
+}body{
+  height:100vh;
+  overflow:hidden;
+  font-family:'Montserrat',sans-serif;
+  color:#fff;
+
+  /* بدل الأسود الخام */
+  background:
+    radial-gradient(circle at 20% 20%, rgba(34,197,94,0.22), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(239,68,68,0.22), transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), transparent 45%),
+    linear-gradient(180deg,#0b0b0b 0%, #050505 40%, #000 100%);
+}
+
+/* cinematic moving light */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(34,197,94,0.18), transparent 25%),
+    radial-gradient(circle at 70% 70%, rgba(239,68,68,0.18), transparent 25%);
+  filter:blur(120px);
+  opacity:.9;
+  animation:floatGlow 12s ease-in-out infinite alternate;
+  z-index:-2;
+}
+
+/* noise layer (ده سر الفخامة الحقيقي) */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity:.05;
+  z-index:-1;
+  pointer-events:none;
+}
+
+@keyframes floatGlow{
+  0%{transform:translate(-30px,-30px) scale(1);}
+  100%{transform:translate(30px,30px) scale(1.1);}
 }
 
 /* HEADER */
@@ -154,7 +220,7 @@ button{
 <body>
 
 <header>
-  <h1><span>FIT</span><span>FEAST</span></h1>
+  <h1><span>FIT</span><span>WAY</span></h1>
   <p>Swipe up or down to choose</p>
 </header>
 
